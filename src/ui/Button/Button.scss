@@ -1,0 +1,21 @@
+.button {
+  padding: 10px 15px;
+  border: 1px solid white;
+  background-color: grey;
+  border-radius: 10px;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgb(185, 185, 185);
+    cursor: pointer;
+  }
+}
+
+.disabled {
+  background-color: rgb(185, 185, 185);
+
+  &:hover {
+    cursor: initial;
+  }
+}

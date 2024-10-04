@@ -1,0 +1,14 @@
+// Display
+
+@mixin flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex($justify: normal, $alight: normal, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $alight;
+  gap: $gap;
+}

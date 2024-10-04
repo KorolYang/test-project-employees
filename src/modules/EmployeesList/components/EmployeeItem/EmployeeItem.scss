@@ -1,0 +1,36 @@
+.employee {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  min-height: 30px;
+  transition: background-color 0.35s ease-in-out;
+
+  &:nth-child(2n) {
+    background-color: $backgroundSecondary;
+  }
+
+  &:hover {
+    background-color: $borderColor;
+  }
+
+  &__avatar {
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  &__fio,
+  &__status,
+  &__tasks {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: $textColor;
+  }
+
+  &__fio {
+    cursor: pointer;
+  }
+}

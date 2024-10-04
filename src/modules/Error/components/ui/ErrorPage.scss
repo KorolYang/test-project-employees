@@ -1,0 +1,15 @@
+.container {
+  @include flex-centered;
+  width: 100vw;
+  height: 100vh;
+}
+
+.error {
+  @include flex-centered;
+  flex-direction: column;
+  width: 400px;
+  min-width: 400px;
+  min-height: 300px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
