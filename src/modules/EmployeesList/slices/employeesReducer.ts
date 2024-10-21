@@ -40,8 +40,18 @@ export const employeesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchGetEmployees.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.employees = action.payload;
+        const newEmployees = action.payload;
+        if (newEmployees.length < state.employees.length) {
+          state.employees = action.payload;
+        } else if (newEmployees.length > state.employees.length) {
+          const uniqueNewEmployees = newEmployees.filter(
+            (newEmp) => !state.employees.some((currentEmp) => currentEmp.id === newEmp.id),
+          );
+          state.employees = [...state.employees, ...uniqueNewEmployees];
+        }
+
+        // state.isLoading = false;
+        // state.employees = action.payload;
       })
       .addCase(fetchGetEmployees.rejected, (state, action) => {
         state.isLoading = false;

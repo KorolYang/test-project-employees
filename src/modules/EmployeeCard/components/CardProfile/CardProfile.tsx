@@ -11,7 +11,7 @@ export const CardProfile = () => {
     useAppSelector(employeeSelector);
 
   const decodeAvatar = decodeDataUrl(avatar, 'width="200"', 'height="200"');
-  
+
   return (
     <div className="card">
       <div className="employee-card__avatar">

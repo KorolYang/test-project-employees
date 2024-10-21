@@ -21,7 +21,7 @@ const initialState: EmployeeByIDState = {
   error: "",
 };
 
-export const getEmployeeByID = createAsyncThunk("employee/getEmployeeByID", async (id: string, thunkAPI) => {
+export const getEmployeeByID = createAsyncThunk("employeeByID/getEmployeeByID", async (id: string, thunkAPI) => {
   try {
     const { data } = await API.employees.getEmployeeByID(id);
     return data;
@@ -30,7 +30,7 @@ export const getEmployeeByID = createAsyncThunk("employee/getEmployeeByID", asyn
   }
 });
 
-export const employeeSlice = createSlice({
+export const employeeByIDSlice = createSlice({
   name: "employeeByID",
   initialState,
   reducers: {},
@@ -50,4 +50,4 @@ export const employeeSlice = createSlice({
   },
 });
 
-export default employeeSlice.reducer;
+export default employeeByIDSlice.reducer;

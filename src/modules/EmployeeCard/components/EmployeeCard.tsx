@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { getEmployeeByID } from "../slice/employeeReducer";
 import { Button } from "@/ui/Button/Button";
 import { CardProfile } from "./CardProfile/CardProfile";
 import { TasksListWithReducer } from "@/modules/TasksList/TasksListWithReducer";
 import "./EmployeeCard.scss";
+import { employeeSelector } from "../slice/employeeSelectors";
 
 const EmployeeCard = () => {
   console.log("employeeCard");
