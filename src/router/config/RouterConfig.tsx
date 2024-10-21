@@ -7,7 +7,7 @@ import { PreLoader } from "@/ui/PreLoader/PreLoader";
 
 export const RoutesConfig = () => [
   {
-    path: "/",
+    path: "/test-project-employees",
     element: (
       <Suspense fallback={"loading..."}>
         <MainPage />
