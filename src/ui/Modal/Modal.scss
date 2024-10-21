@@ -32,10 +32,11 @@
 
   .modal__content {
     padding: 25px;
-    background-color: white;
+    background-color: $backgroundSecondary;
     border-radius: 16px;
     min-width: 250px;
     width: 500px;
+    color: $textColor;
 
     &-enter {
       transform: scale(0);

@@ -1,20 +1,17 @@
 import { useEffect } from "react";
 import { EmployeesList } from "./EmployeeList.tsx/EmployeesList";
 import { SearchEmployee } from "@/modules/SearchEmployee";
-import "./Employees.scss";
 import { useAppDispatch } from "@/store/store";
-import { getEmployees, getFilteredEmployees } from "../slices/employeesReducer";
+import { fetchGetEmployees } from "../slices/employeesReducer";
+import "./Employees.scss";
 
 const Employees = () => {
+  console.log("employees");
   const dispatch = useAppDispatch();
-
+  
   useEffect(() => {
-    const filterParams = sessionStorage.getItem("filterParams");
-    if (filterParams) {
-      dispatch(getFilteredEmployees(filterParams));
-    } else {
-      dispatch(getEmployees());
-    }
+    const filterParams = sessionStorage.getItem("filterParams") || "";
+    dispatch(fetchGetEmployees(filterParams));
   }, []);
 
   return (
@@ -22,10 +19,10 @@ const Employees = () => {
       <SearchEmployee />
       <div className="employees-table">
         <div className="employees-header">
-          <h3>Аватар</h3>
-          <h3>Фамилия Имя</h3>
-          <h3>Статус</h3>
-          <h3>Количество задач</h3>
+          <p>Аватар</p>
+          <p>Фамилия Имя</p>
+          <p>Статус</p>
+          <p>Количество задач</p>
         </div>
         <EmployeesList />
       </div>

@@ -1,21 +1,20 @@
 .button {
   padding: 10px 15px;
-  border: 1px solid white;
-  background-color: grey;
+  border: 1px solid $borderColor;
+  background-color: $background;
   border-radius: 10px;
-  color: white;
-  transition: background-color 0.3s ease-in-out;
+  color: $textColor;
 
   &:hover {
-    background-color: rgb(185, 185, 185);
+    background-color: $hoverColor;
+    transition: background-color 0.3s ease-in-out;
     cursor: pointer;
   }
-}
+  &.disabled {
+    background-color: $disableColor;
 
-.disabled {
-  background-color: rgb(185, 185, 185);
-
-  &:hover {
-    cursor: initial;
+    &:hover {
+      cursor: initial;
+    }
   }
 }

@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { API } from "@/api";
-import { Employee, EmployeeState } from "./types";
+import { EmployeeByIDState } from "./types";
 
-const initialState: EmployeeState = {
-  status: "initial",
+const initialState: EmployeeByIDState = {
+  isLoading: true,
   employee: {
     firstName: "",
     avatar: "",
@@ -31,20 +31,20 @@ export const getEmployeeByID = createAsyncThunk("employee/getEmployeeByID", asyn
 });
 
 export const employeeSlice = createSlice({
-  name: "employee",
+  name: "employeeByID",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getEmployeeByID.pending, (state) => {
-        state.status = "initial";
+        state.isLoading = true;
       })
       .addCase(getEmployeeByID.fulfilled, (state, action) => {
-        state.status = "fetched";
+        state.isLoading = false;
         state.employee = action.payload;
       })
       .addCase(getEmployeeByID.rejected, (state, action) => {
-        state.status = "error";
+        state.isLoading = false;
         state.error = action.error.message;
       });
   },

@@ -1,8 +1,11 @@
 import { configureStore, combineReducers, Reducer } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { DynamicState, ExtendedStore, StaticState } from "./types";
+import themeReduser from "./themeReduser";
 
-const staticReducers = {};
+const staticReducers = {
+  theme: themeReduser,
+};
 
 export const createRootReducer = (asyncReducers = {}) =>
   combineReducers({

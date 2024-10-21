@@ -1,0 +1,14 @@
+.task-container {
+  padding-top: 30px;
+  border-top: 1px solid $borderColor;
+}
+
+.create-task-btn {
+  margin-bottom: 20px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $borderColor;
+}

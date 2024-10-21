@@ -1,31 +1,29 @@
 import { useState } from "react";
-import { getEmployees, getFilteredEmployees } from "@/modules/EmployeesList/slices/employeesReducer";
+import { fetchGetEmployees } from "@/modules/EmployeesList/slices/employeesReducer";
 import { useAppDispatch } from "@/store/store";
 import { Button } from "@/ui/Button/Button";
 import "./SearchEmployee.scss";
 
 export const SearchEmployee = () => {
   const dispatch = useAppDispatch();
-  const isSessionStorage = !sessionStorage.getItem("filterParams");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isDisabled, setIsDisabled] = useState(isSessionStorage);
+  const sessionStorageParams = sessionStorage.getItem("filterParams");
+  const [searchTerm, setSearchTerm] = useState(sessionStorageParams || "");
+  const [isDisabled, setIsDisabled] = useState(!Boolean(sessionStorageParams));
+  console.log("search");
 
   const handlerSearch = () => {
-    if (searchTerm) {
+    if (searchTerm !== "") {
       setIsDisabled(false);
       sessionStorage.setItem("filterParams", searchTerm);
-      dispatch(getFilteredEmployees(searchTerm));
-      setSearchTerm("");
+      dispatch(fetchGetEmployees(searchTerm));
     }
   };
 
   const handlerCansel = () => {
-    if (!searchTerm) {
-      setIsDisabled(true);
-      sessionStorage.removeItem("filterParams");
-      dispatch(getEmployees());
-      setSearchTerm("");
-    }
+    setSearchTerm("");
+    setIsDisabled(true);
+    sessionStorage.removeItem("filterParams");
+    dispatch(fetchGetEmployees(""));
   };
 
   return (
@@ -37,7 +35,9 @@ export const SearchEmployee = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <Button onClick={handlerSearch}>Найти</Button>
+      <Button disabled={!Boolean(searchTerm)} onClick={handlerSearch}>
+        Найти
+      </Button>
       <Button disabled={isDisabled} onClick={handlerCansel}>
         Сбросить
       </Button>

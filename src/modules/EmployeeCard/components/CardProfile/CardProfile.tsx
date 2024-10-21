@@ -1,22 +1,18 @@
 import { useAppSelector } from "@/store/store";
 import StatusSelector from "@/ui/Input/CustomSelect";
-import { employeeSelector, statusSelector } from "../../slice/employeeSelectors";
+import { employeeSelector } from "../../slice/employeeSelectors";
 import { decodeDataUrl } from "@/utils/decodeDataUrl";
 import { dataFormat } from "@/utils/dataFormat";
-import { PreLoader } from "@/ui/PreLoader/PreLoader";
 import "./CardProfile.scss";
 
 export const CardProfile = () => {
+  console.log("cardProfile");
   const { avatar, firstName, lastName, birthdate, phone, jobType, sickCount, id, status, description } =
     useAppSelector(employeeSelector);
 
-  const fetchStatus = useAppSelector(statusSelector);
-  const isLoading = fetchStatus === "initial";
-
   const decodeAvatar = decodeDataUrl(avatar, 'width="200"', 'height="200"');
-  return isLoading ? (
-    <PreLoader />
-  ) : (
+  
+  return (
     <div className="card">
       <div className="employee-card__avatar">
         <img src={decodeAvatar} alt="employee-avatar" />

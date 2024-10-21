@@ -1,5 +1,4 @@
 import { AxiosInstance } from "axios";
-import { Task } from "@/modules/TasksList/slice/types";
 
 export const employees = (instance: AxiosInstance) => ({
   getEmployees() {

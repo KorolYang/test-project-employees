@@ -1,0 +1,42 @@
+.is-done-icon,
+.delete-icon,
+.loading-icon,
+.edit-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: #ff000080;
+  transition: all 0.35s ease-in-out;
+  &:hover {
+    color: #ff0000;
+  }
+}
+
+.edit-icon {
+  margin-right: 20px;
+}
+
+.is-done-icon {
+  color: #00800080;
+  margin-right: 20px;
+  transition: all 0.35s ease-in-out;
+  &:hover {
+    color: #008000;
+  }
+}
+
+.loading-icon {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

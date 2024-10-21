@@ -1,39 +1,57 @@
+import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { Button } from "@/ui/Button/Button";
-import { useAppDispatch, useAppSelector } from "@/store/store";
-import { createTask } from "@/modules/TasksList/slice/tasksListReducer";
+import { useAppDispatch} from "@/store/store";
+import { createTask, editTasks } from "@/modules/TasksList/slice/tasksListReducer";
+import { TTaskFormProps, TaskFormInputs } from "../types/types";
 import "./TaskForm.scss";
-import { tasksListSelector } from "@/modules/TasksList/slice/tasksListSelectors";
 
-type TaskFormInputs = {
-  taskName: string;
-  taskDescription: string;
-  isUrgently: boolean;
-};
 
-export const TaskForm = ({ setIsOpen }: { setIsOpen: (art: boolean) => void }) => {
+
+export const TaskForm: FC<TTaskFormProps> = ({ setIsOpen, titleBtn, task, type }) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<TaskFormInputs>();
+  } = useForm<TaskFormInputs>({
+    values: {
+      taskName: task?.taskName ?? "",
+      taskDescription: task?.taskDescription || "",
+      isUrgently: task?.isUrgently || false,
+    },
+  });
   const dispatch = useAppDispatch();
   const { id } = useParams();
-  const tasks = useAppSelector(tasksListSelector);
 
   const onSubmit: SubmitHandler<TaskFormInputs> = (data) => {
-    const newTask = {
-      taskName: data.taskName,
-      taskDescription: data.taskDescription,
-      taskId: Math.floor(100000 + Math.random() * 900000).toString(),
-      isDone: false,
-      isUrgently: data.isUrgently,
-    };
-    const editTasks = [...tasks, newTask];
-    dispatch(createTask({ id, editTasks }));
-    setIsOpen(false);
+    switch (type) {
+      case "create":
+        const newTask = {
+          taskName: data.taskName,
+          taskDescription: data.taskDescription,
+          taskId: Math.floor(100000 + Math.random() * 900000).toString(),
+          isDone: false,
+          isUrgently: data.isUrgently,
+        };
+        dispatch(createTask({ id, newTask }));
+        setIsOpen(false);
+        break;
+      case "edit":
+        const editTask = {
+          ...task,
+          taskName: data.taskName,
+          taskDescription: data.taskDescription,
+          isUrgently: data.isUrgently,
+        };
+        dispatch(editTasks({ id, newTask: editTask }));
+        setIsOpen(false);
+        break;
+      default:
+        break;
+    }
   };
+
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <label className="form__label" htmlFor="taskName">
@@ -57,7 +75,7 @@ export const TaskForm = ({ setIsOpen }: { setIsOpen: (art: boolean) => void }) =
         Срочно
       </label>
       <input className="form__checkbox" type="checkbox" id="isUrgently" {...register("isUrgently")} />
-      <Button>Создать</Button>
+      <Button>{titleBtn}</Button>
     </form>
   );
 };

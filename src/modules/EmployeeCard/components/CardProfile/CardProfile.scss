@@ -1,11 +1,13 @@
 .card {
+  margin-bottom: 30px;
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   border: 1px solid $borderColor;
-
-  .employee-card__profile {
+  color: $textColor;
+  
+   .employee-card__profile {
     display: flex;
     flex-direction: column;
     gap: 10px;

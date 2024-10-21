@@ -6,7 +6,7 @@ export type TTask = {
   isUrgently?: boolean;
 };
 
-export type Employee = {
+export type EmployeeByID = {
   firstName: string;
   avatar: string;
   status: "sick" | "dayOff" | "working";
@@ -21,8 +21,8 @@ export type Employee = {
   id: string;
 };
 
-export interface EmployeeState {
-  status: "initial" | "fetched" | "error";
-  employee: Employee;
+export interface EmployeeByIDState {
+  isLoading: boolean;
+  employee: EmployeeByID;
   error: string;
 }

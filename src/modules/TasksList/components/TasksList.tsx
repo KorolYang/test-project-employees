@@ -4,17 +4,17 @@ import { TaskForm } from "@/modules/TaskForm/components/TaskForm";
 import { Button } from "@/ui/Button/Button";
 import { Modal } from "@/ui/Modal/Modal";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-import { statusSelector, tasksListSelector } from "../slice/tasksListSelectors";
+import { tasksListSelector } from "../slice/tasksListSelectors";
 import { getTasksList } from "../slice/tasksListReducer";
-import { PreLoader } from "@/ui/PreLoader/PreLoader";
+import { TaskItem } from "./TaskItem/TaskItem";
+import "./TaskList.scss";
 
 const TasksList = () => {
+  console.log("taskList");
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);
   const tasks = useAppSelector(tasksListSelector);
-  const status = useAppSelector(statusSelector);
-  const isLoading = status === "initial";
 
   useEffect(() => {
     dispatch(getTasksList(id));
@@ -24,25 +24,17 @@ const TasksList = () => {
     setIsOpen(true);
   };
   return (
-    <>
-      <Button onClick={handlerModal}>Назначить Задание</Button>
+    <div className="task-container">
+      <Button onClick={handlerModal} className="create-task-btn">
+        Назначить Задание
+      </Button>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        <TaskForm setIsOpen={setIsOpen} />
+        <TaskForm setIsOpen={setIsOpen} titleBtn="Создать" type="create" />
       </Modal>
       <div className="employee-card__tasks">
-        {isLoading ? (
-          <PreLoader />
-        ) : (
-          <ul className="tasks-list">
-            {tasks?.map((task) => (
-              <li key={task.taskId} className="tasks-item">
-                {JSON.stringify(task)}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className="task-list">{tasks?.map((task) => <TaskItem key={task.taskId} task={task} />)}</ul>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,8 +1,9 @@
 import { Reducer, ThunkDispatch, UnknownAction, configureStore } from "@reduxjs/toolkit";
 import { EmployeesState } from "@/modules/EmployeesList/slices/types";
 import { createRootReducer } from "./store";
-import { EmployeeState } from "@/modules/EmployeeCard/slice/types";
+import { EmployeeByIDState } from "@/modules/EmployeeCard/slice/types";
 import { TasksListState } from "@/modules/TasksList/slice/types";
+import { ThemeState } from "./themeReduser";
 
 export interface ExtendedStore extends ReturnType<typeof configureStore> {
   dispatch: ThunkDispatch<any, undefined, UnknownAction>;
@@ -10,10 +11,12 @@ export interface ExtendedStore extends ReturnType<typeof configureStore> {
   getState: () => ReturnType<typeof createRootReducer>;
 }
 
-export type StaticState = object;
+export type StaticState = {
+  theme: ThemeState;
+};
 
 export type DynamicState = {
   employees?: EmployeesState;
-  employee?: EmployeeState;
+  employeeByID?: EmployeeByIDState;
   tasksList?: TasksListState;
 };

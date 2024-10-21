@@ -1,20 +1,19 @@
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { injectReducer, useAppDispatch } from "@/store/store";
+import { useAppDispatch } from "@/store/store";
 import { getEmployeeByID } from "../slice/employeeReducer";
 import { Button } from "@/ui/Button/Button";
 import { CardProfile } from "./CardProfile/CardProfile";
+import { TasksListWithReducer } from "@/modules/TasksList/TasksListWithReducer";
 import "./EmployeeCard.scss";
-import { TasksListWithReducer } from "@/modules/TasksList/TasksList.lazy";
-import { PreLoader } from "@/ui/PreLoader/PreLoader";
 
 const EmployeeCard = () => {
+  console.log("employeeCard");
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const navigation = useNavigate();
 
   useEffect(() => {
-    // injectReducer('name', reducer)
     dispatch(getEmployeeByID(id));
   }, []);
 
@@ -28,9 +27,7 @@ const EmployeeCard = () => {
         <Button onClick={goBack}>Назад</Button>
       </div>
       <CardProfile />
-      <Suspense fallback={<PreLoader />}>
-        <TasksListWithReducer />
-      </Suspense>
+      <TasksListWithReducer />
     </div>
   );
 };

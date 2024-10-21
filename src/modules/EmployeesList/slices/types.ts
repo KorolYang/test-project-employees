@@ -1,7 +1,9 @@
+export type TStatus = "sick" | "dayOff" | "working";
+
 export interface Employee {
   firstName: string;
   avatar: string;
-  status: "sick" | "dayOff" | "working";
+  status: TStatus;
   lastName: string;
   description: string;
   birthdate: string;
@@ -10,7 +12,7 @@ export interface Employee {
 }
 
 export interface EmployeesState {
-  status: "initial" | "fetched" | "error";
+  isLoading: boolean;
   employees: Employee[];
   error: string;
 }

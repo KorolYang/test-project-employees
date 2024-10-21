@@ -1,18 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface EmployeesState {
-  theme: string;
+export interface ThemeState {
+  theme: "light" | "dark";
 }
 
-const initialState: EmployeesState = {
-  theme: "",
+const initialState: ThemeState = {
+  theme: (localStorage.getItem("theme") as "light" | "dark") || "light",
 };
 
 export const themeSlice = createSlice({
-  name: "employees",
+  name: "theme",
   initialState,
-  reducers: {},
+  reducers: {
+    setTheme(state) {
+      state.theme = state.theme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", state.theme);
+    },
+  },
 });
 
-// export const { setEmployees } = employeesSlice.actions;
+export const { setTheme } = themeSlice.actions;
 export default themeSlice.reducer;

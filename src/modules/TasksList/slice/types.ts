@@ -1,13 +1,13 @@
 export type Task = {
   taskName: string;
   taskDescription: string;
-  taskId: string | number;
+  taskId: string;
   isDone: boolean;
   isUrgently?: boolean;
 };
 
 export interface TasksListState {
-  status: "initial" | "fetched" | "error";
+  isLoading: boolean;
   tasks: Task[];
   error: string;
 }

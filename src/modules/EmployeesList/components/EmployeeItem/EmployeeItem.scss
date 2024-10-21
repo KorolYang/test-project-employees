@@ -5,13 +5,13 @@
   gap: 10px;
   width: 100%;
   min-height: 30px;
-  transition: background-color 0.35s ease-in-out;
 
   &:nth-child(2n) {
     background-color: $backgroundSecondary;
   }
 
   &:hover {
+    transition: background-color 0.35s ease-in-out;
     background-color: $borderColor;
   }
 

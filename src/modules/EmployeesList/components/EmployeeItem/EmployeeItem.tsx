@@ -4,6 +4,9 @@ import { Employee } from "../../slices/types";
 import StatusSelector from "@/ui/Input/CustomSelect";
 import { getTaskWord } from "../../helper/taskWord";
 import { decodeDataUrl } from "@/utils/decodeDataUrl";
+import BirthDayIcon from "@/assets/icons/gift.svg";
+import { getBirthdayMessage, getDaysUntilBirthday } from "@/utils/getDaysUntilBirth";
+import { Tooltip } from "@mui/material";
 import "./EmployeeItem.scss";
 
 export type TEmployeeItemProps = {
@@ -14,6 +17,10 @@ export const EmployeeItem: FC<TEmployeeItemProps> = memo(({ employee }) => {
   const avatar = decodeDataUrl(employee.avatar, 'width="60"', 'height="60"');
   const { id } = employee;
   const navigate = useNavigate();
+  console.log("employeesItem");
+
+  const dayUntilBirth = getDaysUntilBirthday(employee.birthdate);
+  const birthMessage = getBirthdayMessage(dayUntilBirth);
 
   const onClickHandler = () => {
     navigate(`/employee/${id}`);
@@ -28,6 +35,13 @@ export const EmployeeItem: FC<TEmployeeItemProps> = memo(({ employee }) => {
         <p>
           {employee.firstName} {employee.lastName}
         </p>
+        {dayUntilBirth <= 7 && (
+          <Tooltip title={`день рождение ${birthMessage} `} placement="top">
+            <p>
+              <BirthDayIcon />
+            </p>
+          </Tooltip>
+        )}
       </div>
       <div className="employee__status">
         <div>

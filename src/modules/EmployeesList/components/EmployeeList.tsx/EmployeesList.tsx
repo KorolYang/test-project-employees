@@ -1,17 +1,13 @@
 import { EmployeeItem } from "../EmployeeItem/EmployeeItem";
 import { useAppSelector } from "@/store/store";
-import { employeesSelector, statusSelector } from "../../slices/employeesSelectors";
-import { PreLoader } from "@/ui/PreLoader/PreLoader";
+import { employeesSelector } from "../../slices/employeesSelectors";
 import "./EmployeesList.scss";
 
 export const EmployeesList = () => {
   const employees = useAppSelector(employeesSelector);
-  const status = useAppSelector(statusSelector);
-  const isLoading = status === "initial";
+  console.log("employeesList");
 
-  return isLoading ? (
-    <PreLoader />
-  ) : (
+  return employees.length === 0 ? null : (
     <ul className="employees-list">{employees?.map((employee) => <EmployeeItem key={employee.id} employee={employee} />)}</ul>
   );
 };
