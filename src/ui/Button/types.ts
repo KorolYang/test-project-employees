@@ -5,4 +5,5 @@ export type TButtonProps = {
   disabled?: boolean;
   className?: string;
   onClick?: (e?: React.MouseEvent) => void;
+  type?: HTMLButtonElement["type"];
 };

@@ -12,7 +12,7 @@ export const MainPage = () => {
     <div className="container">
       <div className="main">
         <h2 className="main__title"> Добро пожаловать!</h2>
-        <Button onClick={login} className="main__btn">
+        <Button type="button" onClick={login} className="main__btn">
           Войти
         </Button>
       </div>

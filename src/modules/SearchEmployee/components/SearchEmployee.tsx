@@ -25,7 +25,9 @@ export const SearchEmployee = () => {
     sessionStorage.removeItem("filterParams");
     dispatch(fetchGetEmployees(""));
   };
-
+  // const onChangeSearchValue=(e)=>{
+  //   setSearchTerm(e.target.value)
+  // }
   return (
     <div className="search">
       <input

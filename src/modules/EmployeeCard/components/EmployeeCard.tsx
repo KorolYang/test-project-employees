@@ -18,9 +18,7 @@ const EmployeeCard = () => {
     dispatch(getEmployeeByID(id));
   }, []);
 
-  const goBack = () => {
-    navigation(-1);
-  };
+  const goBack = () => navigation(-1);
 
   return (
     <div className="employee-card">

@@ -2,12 +2,10 @@ import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { Button } from "@/ui/Button/Button";
-import { useAppDispatch} from "@/store/store";
+import { useAppDispatch } from "@/store/store";
 import { createTask, editTasks } from "@/modules/TasksList/slice/tasksListReducer";
 import { TTaskFormProps, TaskFormInputs } from "../types/types";
 import "./TaskForm.scss";
-
-
 
 export const TaskForm: FC<TTaskFormProps> = ({ setIsOpen, titleBtn, task, type }) => {
   const {

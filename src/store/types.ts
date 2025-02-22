@@ -4,6 +4,7 @@ import { createRootReducer } from "./store";
 import { EmployeeByIDState } from "@/modules/EmployeeCard/slice/types";
 import { TasksListState } from "@/modules/TasksList/slice/types";
 import { ThemeState } from "./themeReduser";
+import { StatisticState } from "@/modules/StatisticEmployees/slice/StatisticReducer";
 
 export interface ExtendedStore extends ReturnType<typeof configureStore> {
   dispatch: ThunkDispatch<any, undefined, UnknownAction>;
@@ -19,4 +20,5 @@ export type DynamicState = {
   employees?: EmployeesState;
   employeeByID?: EmployeeByIDState;
   tasksList?: TasksListState;
+  statistic?: StatisticState;
 };

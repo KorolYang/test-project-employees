@@ -4,6 +4,7 @@ import { ErrorPage } from "@/modules/Error";
 import { MainPage } from "@/modules/Login";
 import { LazyEmployeesListWithReducer } from "@/modules/EmployeesList/EmployeesList.lazy";
 import { PreLoader } from "@/ui/PreLoader/PreLoader";
+import { LazyStatisticEmployeeWithReducer } from "@/modules/StatisticEmployees/StatisticEmployees.lazy";
 
 export const RoutesConfig = () => [
   {
@@ -27,6 +28,14 @@ export const RoutesConfig = () => [
     element: (
       <Suspense fallback={<PreLoader />}>
         <LazyEmployeeCardWithReducer />
+      </Suspense>
+    ),
+  },
+  {
+    path: "statistic-employees",
+    element: (
+      <Suspense fallback={<PreLoader />}>
+        <LazyStatisticEmployeeWithReducer />
       </Suspense>
     ),
   },

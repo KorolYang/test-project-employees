@@ -1,6 +1,6 @@
+import { CSSTransition } from "react-transition-group";
 import { ReactNode, useRef } from "react";
 import "./Modal.scss";
-import { CSSTransition } from "react-transition-group";
 
 export type TModalProps = {
   isOpen: boolean;

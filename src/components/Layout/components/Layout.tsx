@@ -12,6 +12,9 @@ export const Layout: FC<TLayoutProps> = ({ children }) => {
           <Link to={"/employees"} className="header__nav-link">
             Список сотрудников
           </Link>
+          <Link to={"/statistic-employees"} className="header__nav-link">
+            Статистика сотрудников
+          </Link>
         </nav>
         <ThemeSwitch />
       </header>
