@@ -1,5 +1,6 @@
-import { useAppSelector } from "@/store/store";
 import { CartesianGrid, XAxis, YAxis, Bar, BarChart, Tooltip, PieChart, Pie } from "recharts";
+import { useAppSelector } from "@/store/store";
+
 const data = [
   { name: "Болеет", count: 200 },
   { name: "Выходной", count: 300 },
@@ -8,7 +9,6 @@ const data = [
 
 export const Charts = () => {
   const dataTest = useAppSelector((state) => state.statistic.employeers);
-  console.log(dataTest);
   return (
     <div>
       <BarChart width={800} height={300} data={data}>

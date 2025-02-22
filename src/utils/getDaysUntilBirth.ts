@@ -27,10 +27,10 @@ export const getBirthdayMessage = (daysUntilBirthday: number): string => {
     default:
       if (daysUntilBirthday >= 2 && daysUntilBirthday <= 4) {
         return `через ${daysUntilBirthday} дня`;
-      } else if (daysUntilBirthday >= 5 || daysUntilBirthday === 0) {
-        return `через ${daysUntilBirthday} дней`;
-      } else {
-        return `через ${daysUntilBirthday} день`;
       }
+      if (daysUntilBirthday >= 5 || daysUntilBirthday === 0) {
+        return `через ${daysUntilBirthday} дней`;
+      }
+      return `через ${daysUntilBirthday} день`;
   }
 };

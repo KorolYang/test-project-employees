@@ -40,9 +40,8 @@ export const editTasks = createAsyncThunk(
       const editTasks = state.tasksList.tasks.map((task) => {
         if (task.taskId === newTask.taskId) {
           return { ...task, isDone: newTask.isDone };
-        } else {
-          return task;
         }
+        return task;
       });
 
       const { data } = await API.employees.createTask(id, editTasks);

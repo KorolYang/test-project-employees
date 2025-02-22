@@ -10,7 +10,6 @@ export type TTaskItemProps = {
 };
 
 export const TaskItem: FC<TTaskItemProps> = memo(({ task }) => {
-  console.log("taskItem");
   return (
     <li className={clsx("task-item", { "task-item__done": task.isDone })}>
       <div className="task-item__name">

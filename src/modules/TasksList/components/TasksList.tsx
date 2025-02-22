@@ -10,7 +10,6 @@ import { TaskItem } from "./TaskItem/TaskItem";
 import "./TaskList.scss";
 
 const TasksList = () => {
-  console.log("taskList");
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);

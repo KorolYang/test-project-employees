@@ -1,12 +1,12 @@
 import { FC, memo } from "react";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 import { Employee } from "../../slices/types";
 import StatusSelector from "@/ui/Input/CustomSelect";
 import { getTaskWord } from "../../helper/taskWord";
 import { decodeDataUrl } from "@/utils/decodeDataUrl";
 import BirthDayIcon from "@/assets/icons/gift.svg";
 import { getBirthdayMessage, getDaysUntilBirthday } from "@/utils/getDaysUntilBirth";
-import { Tooltip } from "@mui/material";
 import "./EmployeeItem.scss";
 
 export type TEmployeeItemProps = {

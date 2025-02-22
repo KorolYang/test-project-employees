@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Tooltip from "@mui/material/Tooltip";
 import { Task } from "../../slice/types";
 import { useAppDispatch } from "@/store/store";
 import { deleteTask, editTasks } from "../../slice/tasksListReducer";
@@ -9,7 +10,6 @@ import DeleteIcon from "@/assets/icons/trash-2.svg";
 import IsDoneIcon from "@/assets/icons/check.svg";
 import LoaderIcon from "@/assets/icons/loader.svg";
 import EditIcon from "@/assets/icons/edit.svg";
-import Tooltip from "@mui/material/Tooltip";
 import "./TaskSetting.scss";
 
 export const TaskSettings = ({ task }: { task: Task }) => {
@@ -17,7 +17,7 @@ export const TaskSettings = ({ task }: { task: Task }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { id } = useParams();
-  const taskId = task.taskId;
+  const { taskId } = task;
 
   const handlerDeleteTask = () => {
     setIsLoading(true);

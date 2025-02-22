@@ -9,7 +9,6 @@ export const SearchEmployee = () => {
   const sessionStorageParams = sessionStorage.getItem("filterParams");
   const [searchTerm, setSearchTerm] = useState(sessionStorageParams || "");
   const [isDisabled, setIsDisabled] = useState(!Boolean(sessionStorageParams));
-  console.log("search");
 
   const handlerSearch = () => {
     if (searchTerm !== "") {

@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import { useAppDispatch } from "@/store/store";
 import { Charts } from "./Charts/Charts";
-import { useEffect } from "react";
 import { GetEmployeesStatistic } from "../slice/StatisticReducer";
 
 const StatisticEmployee = () => {

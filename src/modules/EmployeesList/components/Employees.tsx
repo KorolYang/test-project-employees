@@ -8,7 +8,7 @@ import "./Employees.scss";
 const Employees = () => {
   console.log("employees");
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     const filterParams = sessionStorage.getItem("filterParams") || "";
     dispatch(fetchGetEmployees(filterParams));

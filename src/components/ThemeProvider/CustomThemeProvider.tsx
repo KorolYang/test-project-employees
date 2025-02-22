@@ -1,8 +1,8 @@
-import employeesReducer from "@/modules/EmployeesList/slices/employeesReducer";
-import { injectReducer, useAppSelector } from "@/store/store";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { deepOrange, grey } from "@mui/material/colors";
 import { ReactNode, useEffect } from "react";
+import { injectReducer, useAppSelector } from "@/store/store";
+import employeesReducer from "@/modules/EmployeesList/slices/employeesReducer";
 
 const lightTheme = createTheme({
   palette: {

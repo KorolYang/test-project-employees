@@ -1,8 +1,9 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API } from "@/api";
 import { EmployeeByID } from "@/modules/EmployeeCard/slice/types";
 import { TStatus } from "@/modules/EmployeesList/slices/types";
 import { Task } from "@/modules/TasksList/slice/types";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 type StatisticTask = {
   isDone: boolean;
   isUrgently?: boolean;
@@ -42,12 +43,12 @@ export const GetEmployeesStatistic = createAsyncThunk("statistic/getEmployeesSta
       {} as Record<string, number>,
     );
     const statusTasks = data.reduce(
-        (acc: StatisticEmployee, employee: EmployeeByID) => {
-            acc[employee.status] = (acc[employee.status] || 0) + 1;
-            return acc;
-          },
-          {} as Record<string, number>,
-    )
+      (acc: StatisticEmployee, employee: EmployeeByID) => {
+        acc[employee.status] = (acc[employee.status] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data);
   }
