@@ -8,7 +8,7 @@ import { CustomThemeProvider } from "./components/ThemeProvider/CustomThemeProvi
 import "./index.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <CustomThemeProvider>
         <Layout>
@@ -16,5 +16,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </Layout>
       </CustomThemeProvider>
     </Provider>
-  </BrowserRouter>,
+  </HashRouter>,
 );
